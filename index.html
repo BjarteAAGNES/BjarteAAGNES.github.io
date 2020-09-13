@@ -39,24 +39,30 @@
 <h1>Documentation of R-module nordcansurvival<a class="headerlink" href="#documentation-of-r-module-nordcansurvival" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="project-pages">
 <h2>Project pages<a class="headerlink" href="#project-pages" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>github</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival</a></p>
-</div></blockquote>
-</div></blockquote>
+<dl class="simple">
+<dt>github wiki</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki</a>
+<a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival</a></p>
+</dd>
+<dt>github issues</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/issues">https://github.com/CancerRegistryOfNorway/NORDCAN/issues</a></p>
+</dd>
+<dt>slack feedback</dt><dd><p><a class="reference external" href="https://app.slack.com/client/TUKT10AHW/C01A6SN13QA">https://app.slack.com/client/TUKT10AHW/C01A6SN13QA</a></p>
+</dd>
+</dl>
 </div>
 <div class="section" id="package-description">
-<h2>package description<a class="headerlink" href="#package-description" title="Permalink to this headline">¶</a></h2>
+<h2>Package description<a class="headerlink" href="#package-description" title="Permalink to this headline">¶</a></h2>
 <p><strong>nordcansurvival</strong> is a R package for survival statistics in the NORDCAN project.</p>
 <p><a class="reference external" href="https://nordcan-preprod.iarc.fr/en/about">https://nordcan-preprod.iarc.fr/en/about</a></p>
 <div class="line-block">
-<div class="line">nordcansurvival::survival_statistics() provides non-parametric estimate of marginal relative survival,</div>
+<div class="line"><strong>nordcansurvival::survival_statistics()</strong> provides non-parametric estimate of marginal relative survival,</div>
 <div class="line">which under assumptions can be interpreted as marginal net survival.</div>
 </div>
-<p>The nordcansurvival::survival_statistics() is calling the <strong>Stata stnet</strong> program using the <em>Pohar Perme estimator</em> with <em>Brenner weighting</em> to estimate age-standardized net survival.</p>
 <div class="line-block">
-<div class="line">The package is self-contained, i.e. all programs, like stnet, are provided within the package.</div>
+<div class="line">The <strong>nordcansurvival::survival_statistics()</strong> is calling the <strong>Stata stnet</strong> program,</div>
+<div class="line">using the <em>Pohar Perme estimator</em> with <em>Brenner weighting</em> to estimate age-standardized net survival.</div>
+</div>
+<div class="line-block">
+<div class="line">The package is self-contained, i.e. all programs, like Stata stnet, are provided within the package.</div>
 <div class="line">The provided Stata programs used within this package may be optimized, thus not identical to the official programs, but will provide identical estimates.</div>
 </div>
 <div class="line-block">
@@ -66,11 +72,15 @@
 <h3>Data sources:<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="cases-of-cancer">
 <h4>Cases of cancer<a class="headerlink" href="#cases-of-cancer" title="Permalink to this headline">¶</a></h4>
-<p>NORDCAN incidence data, using a predefined subsets of entities/entity groups.</p>
+<p><strong>NORDCAN incidence data</strong> (after preprocessing and enrichment)</p>
+<p>Included for analyzis is a predefined subsets of entities/entity groups.</p>
 </div>
 <div class="section" id="national-general-population-life-table">
 <h4>National general population life table<a class="headerlink" href="#national-general-population-life-table" title="Permalink to this headline">¶</a></h4>
-<p>A national population life table containing the conditional probability of SURVIVING the next year for each combination of values of the demographic variables; age, year and sex.</p>
+<div class="line-block">
+<div class="line">A national population life table containing the conditional probability of SURVIVING the next year</div>
+<div class="line">for each combination of values of the demographic variables; <em>age, year and sex</em>.</div>
+</div>
 <p>Life-table specification see <a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Call-for-data-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Call-for-data-Survival</a></p>
 </div>
 </div>
@@ -93,20 +103,21 @@
 </div>
 <p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1877782120300795">https://www.sciencedirect.com/science/article/pii/S1877782120300795</a></p>
 <div class="line-block">
-<div class="line">An illustration of the Brenner approach to age-standardised net survival (Pohar Perme estimator) is provided by</div>
-<div class="line">Professor of Biostatistics Paul Dickman at</div>
+<div class="line">An illustration of the Brenner approach to age-standardised net survival (Pohar Perme estimator)</div>
+<div class="line">is provided by Professor of Biostatistics Paul Dickman at</div>
 </div>
 <p><a class="reference external" href="https://www.pauldickman.com/software/strs/age_standardised_net_survival/">https://www.pauldickman.com/software/strs/age_standardised_net_survival/</a></p>
 <div class="line-block">
 <div class="line">For documentation of the NORDCAN ICSS weights and correspondig age groups; see</div>
+<div class="line"><a class="reference external" href="https://nordcan.iarc.fr/">https://nordcan.iarc.fr/</a>  help tabs [Glossary of statistical terms [Relative Survial] ]</div>
 </div>
-<p><a class="reference external" href="https://nordcan.iarc.fr/en">https://nordcan.iarc.fr/en</a>/help#
-|  tabs [Glossary of statistical terms [Relative Survial] ]</p>
+</div>
 </div>
 </div>
 <div class="section" id="nordcansurvival-functions">
-<h3>nordcansurvival functions<a class="headerlink" href="#nordcansurvival-functions" title="Permalink to this headline">¶</a></h3>
-<p>Synopsis:</p>
+<h2>nordcansurvival functions<a class="headerlink" href="#nordcansurvival-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="synopsis">
+<h3>Synopsis:<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="utility-function">
 <h4>utility function<a class="headerlink" href="#utility-function" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">get_stata_info</span><span class="p">()</span>
@@ -173,11 +184,12 @@
 </div></blockquote>
 <p>A detailed dta file, and a csv with result (predefined content and format).</p>
 </div>
-<div class="section" id="use-case-extract-define-survival-data">
-<h4>USE CASE extract_define_survival_data()<a class="headerlink" href="#use-case-extract-define-survival-data" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="use-case">
+<h3>USE CASE<a class="headerlink" href="#use-case" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="extract-define-survival-data">
+<h4>extract_define_survival_data()<a class="headerlink" href="#extract-define-survival-data" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
-
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;P:/Dataflyt/nordcan/test&quot;</span><span class="p">)</span>
 
 <span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">extract_define_survival_data</span><span class="p">(</span>
 
@@ -189,13 +201,11 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="use-case-survival-statistics">
-<h4>USE CASE survival_statistics()<a class="headerlink" href="#use-case-survival-statistics" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="survival-statistics">
+<h4>survival_statistics()<a class="headerlink" href="#survival-statistics" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
 
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;P:/Dataflyt/nordcan/test&quot;</span><span class="p">)</span>
-
-    <span class="nf">survival_statistics</span><span class="p">(</span>
+    <span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">(</span>
 
         <span class="nf">infile</span><span class="p">(</span><span class="n">P</span><span class="o">:/</span><span class="n">Dataflyt</span><span class="o">/</span><span class="n">nordcan</span><span class="o">/</span><span class="n">nordcansurvival</span><span class="o">/</span><span class="n">inst</span><span class="o">/</span><span class="n">Stata</span><span class="o">/</span><span class="n">demo</span><span class="o">/</span><span class="n">NCS_NO_anonymous_example_data.dta</span><span class="p">)</span> <span class="p">,</span>
 
@@ -309,16 +319,16 @@ S:\Prog64\STATA\Stata16MP\ado\base\e\export.ado
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <dl>
-<dt>DOCUMENTATION</dt><dd><p>Document R-module and functions the R-way</p>
-<p>Describe expected running time for complete data, for preparing, and for estimation</p>
+<dt>DOCUMENTATION</dt><dd><p>TUESDAY Document R-module and functions the R-way</p>
+<p>TUESDAY Describe expected running time for complete data, for preparing, and for estimation</p>
 </dd>
-<dt>PROGRAMMING</dt><dd><p>Complete the production of survival_results.csv adding correct formatting and structure</p>
-<p>Add an where option to survival_statistics() to run subsets.</p>
-<p>Add 10-year survival estimates for Breas and Prostate cancer.</p>
+<dt>PROGRAMMING</dt><dd><p>MONDAY Complete the production of survival_results.csv adding correct formatting and structure</p>
+<p>MONDAY Add an where option to survival_statistics() to run subsets.</p>
+<p>MONDAY Add 10-year survival estimates for Breas and Prostate cancer.</p>
 </dd>
 <dt>STATISTICS</dt><dd><p>Prepare what to expect due to small N problem (and possible solutions)</p>
 </dd>
-<dt>TESTING</dt><dd><p>Test on Stata 14, 15, 16</p>
+<dt>TESTING</dt><dd><p>MONDAY Test on Stata 14, 15, 16</p>
 <p>Test documentation on some non expert users.</p>
 </dd>
 </dl>
@@ -339,7 +349,7 @@ S:\Prog64\STATA\Stata16MP\ado\base\e\export.ado
   <ul>
 <li><a class="reference internal" href="#">Documentation of R-module nordcansurvival</a><ul>
 <li><a class="reference internal" href="#project-pages">Project pages</a></li>
-<li><a class="reference internal" href="#package-description">package description</a><ul>
+<li><a class="reference internal" href="#package-description">Package description</a><ul>
 <li><a class="reference internal" href="#data-sources">Data sources:</a><ul>
 <li><a class="reference internal" href="#cases-of-cancer">Cases of cancer</a></li>
 <li><a class="reference internal" href="#national-general-population-life-table">National general population life table</a></li>
@@ -349,13 +359,19 @@ S:\Prog64\STATA\Stata16MP\ado\base\e\export.ado
 <li><a class="reference internal" href="#age-standardization-method">Age-standardization method</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><a class="reference internal" href="#nordcansurvival-functions">nordcansurvival functions</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis:</a><ul>
 <li><a class="reference internal" href="#utility-function">utility function</a></li>
 <li><a class="reference internal" href="#main-functions">main functions</a></li>
 <li><a class="reference internal" href="#input">input</a></li>
 <li><a class="reference internal" href="#output">output</a></li>
-<li><a class="reference internal" href="#use-case-extract-define-survival-data">USE CASE extract_define_survival_data()</a></li>
-<li><a class="reference internal" href="#use-case-survival-statistics">USE CASE survival_statistics()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-case">USE CASE</a><ul>
+<li><a class="reference internal" href="#extract-define-survival-data">extract_define_survival_data()</a></li>
+<li><a class="reference internal" href="#survival-statistics">survival_statistics()</a></li>
 <li><a class="reference internal" href="#use-case-get-stata-info">USE CASE get_stata_info()</a></li>
 </ul>
 </li>
