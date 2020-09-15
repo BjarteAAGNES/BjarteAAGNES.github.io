@@ -43,9 +43,9 @@
 <dt>github wiki</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki</a>
 <a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival</a></p>
 </dd>
-<dt>github issues</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/issues">https://github.com/CancerRegistryOfNorway/NORDCAN/issues</a></p>
+<dt>github issues (formal feedback)</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/issues">https://github.com/CancerRegistryOfNorway/NORDCAN/issues</a></p>
 </dd>
-<dt>slack feedback</dt><dd><p><a class="reference external" href="https://app.slack.com/client/TUKT10AHW/C01A6SN13QA">https://app.slack.com/client/TUKT10AHW/C01A6SN13QA</a></p>
+<dt>slack testing (informal feedback)</dt><dd><p><a class="reference external" href="https://app.slack.com/client/TUKT10AHW/C01A6SN13QA">https://app.slack.com/client/TUKT10AHW/C01A6SN13QA</a></p>
 </dd>
 </dl>
 </div>
@@ -141,7 +141,9 @@
 <h4>main functions<a class="headerlink" href="#main-functions" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">extract_define_survival_data</span><span class="p">()</span>
 
-<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">()</span>
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">()</span>  <span class="c1"># estimates net survival (by default)</span>
+
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">nordcansurvival</span><span class="p">()</span>  <span class="c1"># run the above functions</span>
 </pre></div>
 </div>
 </div>
@@ -150,17 +152,6 @@
 <div class="line-block">
 <div class="line">The default input to <strong>extract_define_survival_data()</strong> is a subset of the <strong>nordcan_incidence_dataset</strong></div>
 <div class="line">where records <strong>excl_surv_total==0</strong> and variables are <strong>column_name_set_survival</strong></div>
-</div>
-<div class="line-block">
-<div class="line">( The program also accept a CSV or dta file with the same structure as the above data source )</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Joonas: <strong>nordcan_incidence_dataset</strong></p>
-<p>IS THIS A FILE ON DISK ? TO BE REFERED TO BY A SYSTEM WIDE NAME?</p>
-<blockquote>
-<div><p>what function if any define this?</p>
-</div></blockquote>
 </div>
 </div>
 <div class="section" id="output">
@@ -174,13 +165,6 @@
 <li><p><strong>survival_file_analysis.dta</strong> (only records to be used in estimation, only necessary vars)</p></li>
 </ol>
 </div></blockquote>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Joonas: Both files are wanted by Siri.</p>
-<p>I suggest both files should have <strong>some standard naming and be saved in a standard project directory</strong>, parallel to the <strong>nordcan_incidence_dataset</strong></p>
-<p>The survival_file_base.dta also contain records that can not be included in estimation due to lack of data in all age-strata used for weigthing.</p>
-<p>The dta files can be read using the haven package, possibly installed seperately by end user.</p>
-</div>
 <p>The survival_file_analysis.dta is then used by</p>
 <div class="line-block">
 <div class="line"><strong>survival_statistics()</strong> which run the analysis and saves two files</div>
@@ -194,8 +178,8 @@
 <p>A detailed dta file, and a csv with result (predefined content and format).</p>
 </div>
 </div>
-<div class="section" id="use-case">
-<h3>USE CASE<a class="headerlink" href="#use-case" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="use-case-to-be-updated">
+<h3>USE CASE TO BE UPDATED<a class="headerlink" href="#use-case-to-be-updated" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="extract-define-survival-data">
 <h4>extract_define_survival_data()<a class="headerlink" href="#extract-define-survival-data" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
@@ -216,21 +200,29 @@
 
     <span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">(</span>
 
-        <span class="nf">infile</span><span class="p">(</span><span class="n">P</span><span class="o">:/</span><span class="n">Dataflyt</span><span class="o">/</span><span class="n">nordcan</span><span class="o">/</span><span class="n">nordcansurvival</span><span class="o">/</span><span class="n">inst</span><span class="o">/</span><span class="n">Stata</span><span class="o">/</span><span class="n">demo</span><span class="o">/</span><span class="n">NCS_NO_anonymous_example_data.dta</span><span class="p">)</span> <span class="p">,</span>
+        <span class="n">infile</span> <span class="o">=</span> <span class="s">&quot;P:/Dataflyt/nordcan/nordcansurvival/inst/Stata/demo/NCS_NO_anonymous_example_data.dta&quot;</span> <span class="p">,</span>
 
-        <span class="nf">outfile</span><span class="p">(</span><span class="n">NCS_NOR_example_data_res</span><span class="p">)</span> <span class="p">,</span>
-
-        <span class="nf">lifetable</span><span class="p">(</span><span class="n">P</span><span class="o">:/</span><span class="n">Dataflyt</span><span class="o">/</span><span class="n">nordcan</span><span class="o">/</span><span class="n">nordcansurvival</span><span class="o">/</span><span class="n">inst</span><span class="o">/</span><span class="n">Stata</span><span class="o">/</span><span class="n">demo</span><span class="o">/</span><span class="n">NO_2018_lifetable.dta</span><span class="p">)</span> <span class="p">,</span>
-
-        <span class="nf">estimand</span><span class="p">(</span><span class="s">&quot;netsurvival&quot;</span><span class="p">)</span>
+        <span class="n">lifetable</span> <span class="o">=</span> <span class="s">&quot;P:/Dataflyt/nordcan/nordcansurvival/inst/Stata/demo/NO_2018_lifetable.dta&quot;</span>
 
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="nordcansurvival">
+<h4>nordcansurvival()<a class="headerlink" href="#nordcansurvival" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
+
+    <span class="nf">nordcansurvival</span><span class="p">()</span>
+
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="get-stata-info">
 <h4>get_stata_info()<a class="headerlink" href="#get-stata-info" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">get_stata_info</span><span class="p">()</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span>    <span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
+
+<span class="nf">get_stata_info</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>example results from</p>
@@ -328,16 +320,16 @@ S:\Prog64\STATA\Stata16MP\ado\base\e\export.ado
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <dl>
-<dt>DOCUMENTATION</dt><dd><p>TUESDAY Document R-module and functions the R-way</p>
-<p>TUESDAY Describe expected running time for complete data, for preparing, and for estimation</p>
+<dt>DOCUMENTATION</dt><dd><p>Document R-module and functions the R-way</p>
+<p>Describe expected running time for complete data, for preparing, and for estimation</p>
 </dd>
-<dt>PROGRAMMING</dt><dd><p>MONDAY Complete the production of survival_results.csv adding correct formatting and structure</p>
-<p>MONDAY Add an where option to survival_statistics() to run subsets.</p>
-<p>MONDAY Add 10-year survival estimates for Breas and Prostate cancer.</p>
+<dt>PROGRAMMING</dt><dd><p>Complete the production of survival_results.csv adding correct formatting and structure</p>
+<p>Add an where option to survival_statistics() to run subsets.</p>
+<p>Add 10-year survival estimates for Breas and Prostate cancer.</p>
 </dd>
 <dt>STATISTICS</dt><dd><p>Prepare what to expect due to small N problem (and possible solutions)</p>
 </dd>
-<dt>TESTING</dt><dd><p>MONDAY Test on Stata 14, 15, 16</p>
+<dt>TESTING</dt><dd><p>Test on Stata 14, 15, 16</p>
 <p>Test documentation on some non expert users.</p>
 </dd>
 </dl>
@@ -378,9 +370,10 @@ S:\Prog64\STATA\Stata16MP\ado\base\e\export.ado
 <li><a class="reference internal" href="#output">output</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#use-case">USE CASE</a><ul>
+<li><a class="reference internal" href="#use-case-to-be-updated">USE CASE TO BE UPDATED</a><ul>
 <li><a class="reference internal" href="#extract-define-survival-data">extract_define_survival_data()</a></li>
 <li><a class="reference internal" href="#survival-statistics">survival_statistics()</a></li>
+<li><a class="reference internal" href="#nordcansurvival">nordcansurvival()</a></li>
 <li><a class="reference internal" href="#get-stata-info">get_stata_info()</a></li>
 </ul>
 </li>
