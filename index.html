@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation of R-module nordcansurvival &#8212; nordcansurvival()</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">NORDCAN</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation of R-module nordcansurvival</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation-of-r-module-nordcansurvival">
+<h1>Documentation of R-module nordcansurvival<a class="headerlink" href="#documentation-of-r-module-nordcansurvival" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="project-pages">
+<h2>Project pages<a class="headerlink" href="#project-pages" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>github wiki</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki</a>
+<a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Module-Survival</a></p>
+</dd>
+<dt>github issues (formal feedback)</dt><dd><p><a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/issues">https://github.com/CancerRegistryOfNorway/NORDCAN/issues</a></p>
+</dd>
+<dt>slack testing (informal feedback)</dt><dd><p><a class="reference external" href="https://app.slack.com/client/TUKT10AHW/C01A6SN13QA">https://app.slack.com/client/TUKT10AHW/C01A6SN13QA</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="package-description">
+<h2>Package description<a class="headerlink" href="#package-description" title="Permalink to this headline">¶</a></h2>
+<p><strong>nordcansurvival</strong> is a R package for survival statistics in the NORDCAN project.</p>
+<p><a class="reference external" href="https://nordcan-preprod.iarc.fr/en/about">https://nordcan-preprod.iarc.fr/en/about</a></p>
+<div class="line-block">
+<div class="line"><strong>nordcansurvival::survival_statistics()</strong> provides non-parametric estimate of marginal relative survival,</div>
+<div class="line">which under assumptions can be interpreted as marginal net survival.</div>
+</div>
+<div class="line-block">
+<div class="line">The <strong>nordcansurvival::survival_statistics()</strong> is calling the <strong>Stata stnet</strong> program,</div>
+<div class="line">using the <em>Pohar Perme estimator</em> with <em>Brenner weighting</em> to estimate age-standardized net survival.</div>
+</div>
+<div class="line-block">
+<div class="line">The package is self-contained, i.e. all programs, like Stata stnet, are provided within the package.</div>
+<div class="line">The provided Stata programs used within this package may be optimized, thus not identical to the official programs, but will provide identical estimates.</div>
+</div>
+<div class="line-block">
+<div class="line">The programs is provided for use with Stata 14.2, 15.1, 16.1, or more recent versions.</div>
+</div>
+<div class="section" id="data-sources">
+<h3>Data sources:<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cancer-cases">
+<h4>Cancer cases<a class="headerlink" href="#cancer-cases" title="Permalink to this headline">¶</a></h4>
+<p><strong>NORDCAN incidence data</strong> (after preprocessing and enrichment)</p>
+<p>Included for analyses is a predefined subsets of entities/entity groups.</p>
+</div>
+<div class="section" id="national-general-population-life-table">
+<h4>National general population life-table<a class="headerlink" href="#national-general-population-life-table" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line">A national population life-table containing the conditional probability of SURVIVING the next year</div>
+<div class="line">for each combination of values of the demographic variables; <em>age, year and sex</em>.</div>
+</div>
+<p>Life-table specification see <a class="reference external" href="https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Call-for-data-Survival">https://github.com/CancerRegistryOfNorway/NORDCAN/wiki/Call-for-data-Survival</a></p>
+</div>
+</div>
+<div class="section" id="stata-stnet">
+<h3>Stata stnet<a class="headerlink" href="#stata-stnet" title="Permalink to this headline">¶</a></h3>
+<p>stnet version 1.0.8 2020-06-11</p>
+<p><a class="reference external" href="https://www.pauldickman.com/software/stnet/stnet/">https://www.pauldickman.com/software/stnet/stnet/</a></p>
+<div class="line-block">
+<div class="line">Enzo Coviello, Karri Seppä, Paul W. Dickman, Arun Pokhrel, 2015.</div>
+<div class="line"><em>Estimating net survival using a life-table approach</em>,</div>
+<div class="line">The Stata Journal, StataCorp LP, vol. 15(1), pages 173-185.</div>
+</div>
+<p><a class="reference external" href="https://www.pauldickman.com/pdf/Coviello2015.pdf">https://www.pauldickman.com/pdf/Coviello2015.pdf</a></p>
+<div class="section" id="age-standardisation-method">
+<h4>Age-standardisation method<a class="headerlink" href="#age-standardisation-method" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line">The age-standardisation method is described in</div>
+<div class="line">Mark J. Rutherford, Paul W.Dickman, EnzoCoviello, Paul C.Lambert, 2020.</div>
+<div class="line"><em>Estimation of age-standardized net survival, even when age-specific data are sparse</em></div>
+</div>
+<p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1877782120300795">https://www.sciencedirect.com/science/article/pii/S1877782120300795</a></p>
+<div class="line-block">
+<div class="line">An illustration of the Brenner approach to age-standardised net survival (Pohar Perme estimator) is at</div>
+</div>
+<p><a class="reference external" href="https://www.pauldickman.com/software/strs/age_standardised_net_survival/">https://www.pauldickman.com/software/strs/age_standardised_net_survival/</a></p>
+<div class="line-block">
+<div class="line">For documentation of the NORDCAN ICSS weights and correspondig age groups; see</div>
+<div class="line"><a class="reference external" href="https://nordcan.iarc.fr/">https://nordcan.iarc.fr/</a>  help tabs [Glossary of statistical terms [Relative Survial] ]</div>
+</div>
+<div class="line-block">
+<div class="line">The same methods and program (stnet) are used in studies in ICBP SURVMARK-2 (includes Denmark and Norway) i.e.</div>
+<div class="line"><br /></div>
+<div class="line"><em>Progress in cancer survival, mortality, and incidence in seven high-income countries 1995–2014 (ICBP SURVMARK-2): a population-based study</em></div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(19)30456-5/fulltext">https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(19)30456-5/fulltext</a></div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://survival.iarc.fr/Survmark/en/">https://survival.iarc.fr/Survmark/en/</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nordcansurvival-functions">
+<h2>nordcansurvival functions<a class="headerlink" href="#nordcansurvival-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="synopsis">
+<h3>Synopsis:<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="utility-function">
+<h4>utility function<a class="headerlink" href="#utility-function" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">get_stata_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Return information on Stata, Stata installation, and the programs used.</div>
+<div class="line">This should be included in any technical support questions.</div>
+</div>
+</div>
+<div class="section" id="main-functions">
+<h4>main functions<a class="headerlink" href="#main-functions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">extract_define_survival_data</span><span class="p">()</span>
+
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">()</span>  <span class="c1"># estimates net survival (by default)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="input">
+<h4>input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line">The default input to <strong>extract_define_survival_data()</strong> is a subset of the <strong>nordcan_incidence_dataset</strong></div>
+<div class="line">where records <strong>excl_surv_total==0</strong> and variables are <strong>column_name_set_survival</strong></div>
+</div>
+</div>
+<div class="section" id="output">
+<h4>output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
+<div class="line-block">
+<div class="line"><strong>extract_define_survival_data()</strong> prepare survival data saving two datasets:</div>
+</div>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>survival_file_base.dta</strong>  (all <em>potential</em> records, all relevant variables including strings)</p></li>
+<li><p><strong>survival_file_analysis.dta</strong> (only records to be used in estimation, only necessary vars)</p></li>
+</ol>
+</div></blockquote>
+<p>The survival_file_analysis.dta is then used by</p>
+<div class="line-block">
+<div class="line"><strong>survival_statistics()</strong> which run the analysis and saves two files</div>
+</div>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>survival_detailed_results.dta</strong></p></li>
+<li><p><strong>survival_results.csv</strong></p></li>
+</ol>
+</div></blockquote>
+<p>A detailed dta file, and a csv with result (predefined content and format).</p>
+</div>
+</div>
+<div class="section" id="use-case-to-be-updated">
+<h3>USE CASE TO BE UPDATED<a class="headerlink" href="#use-case-to-be-updated" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="extract-define-survival-data">
+<h4>extract_define_survival_data()<a class="headerlink" href="#extract-define-survival-data" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
+
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">extract_define_survival_data</span><span class="p">()</span>
+
+<span class="c1"># read the NORDCAN incidence data</span>
+<span class="c1"># saves two files in the NORDCAN survival directory</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="survival-statistics">
+<h4>survival_statistics()<a class="headerlink" href="#survival-statistics" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
+
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">survival_statistics</span><span class="p">()</span>
+
+<span class="c1"># saves two result files in the NORDCAN survival directory</span>
+<span class="c1"># csv file: estimation for publication</span>
+<span class="c1"># dta file: detailed results for other use or inspection</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-stata-info">
+<h4>get_stata_info()<a class="headerlink" href="#get-stata-info" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nordcansurvival</span><span class="p">)</span>
+
+<span class="n">nordcansurvival</span><span class="o">::</span><span class="nf">get_stata_info</span><span class="p">()</span>    <span class="c1"># for debugging: returns info on installation to R-consol</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stata-intallation">
+<h2>Stata intallation<a class="headerlink" href="#stata-intallation" title="Permalink to this headline">¶</a></h2>
+<p>All countries should have Stata installed, available from the same pc/server as the NORDCAN R-packages are installed.
+The R-pacakge nordcansurvival provides all neccesarry Stata programs and settings used for the nordcansurvival.</p>
+<p>Please, make your Stata installation up-dated. The current recent versions are:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">* 16.1      February 2020   (free downloadable update)</span>
+<span class="c1">* 15.1      November 2017   (free downloadable update)</span>
+<span class="c1">* 14.2      September 2016  (free downloadable update)</span>
+</pre></div>
+</div>
+<p>An simple way to update if on a secure non-internett zone is to update a Stata installation on the internet zone,
+and copy the updated installation to the non-internett zone.</p>
+<p>The following Stata command will show the version of Stata:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">about</span>
+</pre></div>
+</div>
+<p>and the following will help you update automatically if on internetzone.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">update query</span>
+</pre></div>
+</div>
+<p>Update without Internet access can be done done downloading and moving update archive to non internet zone</p>
+<p><a class="reference external" href="https://www.stata.com/support/updates/">https://www.stata.com/support/updates/</a></p>
+<p>After unzipping the update archive at non internet zone, use the <em>update</em> command</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">update</span> all , from(directory_of_updates) detail force<span class="k"> exit</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<dl class="simple">
+<dt>DOCUMENTATION</dt><dd><p>Document R-module and functions the R-way
+Describe expected running time for complete data, for preparing, and for estimation</p>
+</dd>
+<dt>PROGRAMMING</dt><dd><p>Complete the production of survival_results.csv adding correct formatting and structure
+Add a WHERE option to survival_statistics() to run subsets.
+Add 10-year survival estimates for breast and prostate cancer.</p>
+</dd>
+<dt>STATISTICS</dt><dd><p>Prepare what to expect due to small N problem (and possible solutions)</p>
+</dd>
+<dt>TESTING</dt><dd><p>Test on Stata <strong>14.2, 15.1, 16.1</strong>
+Test documentation on some non-expert users.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation of R-module nordcansurvival</a><ul>
+<li><a class="reference internal" href="#project-pages">Project pages</a></li>
+<li><a class="reference internal" href="#package-description">Package description</a><ul>
+<li><a class="reference internal" href="#data-sources">Data sources:</a><ul>
+<li><a class="reference internal" href="#cancer-cases">Cancer cases</a></li>
+<li><a class="reference internal" href="#national-general-population-life-table">National general population life-table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stata-stnet">Stata stnet</a><ul>
+<li><a class="reference internal" href="#age-standardisation-method">Age-standardisation method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nordcansurvival-functions">nordcansurvival functions</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis:</a><ul>
+<li><a class="reference internal" href="#utility-function">utility function</a></li>
+<li><a class="reference internal" href="#main-functions">main functions</a></li>
+<li><a class="reference internal" href="#input">input</a></li>
+<li><a class="reference internal" href="#output">output</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-case-to-be-updated">USE CASE TO BE UPDATED</a><ul>
+<li><a class="reference internal" href="#extract-define-survival-data">extract_define_survival_data()</a></li>
+<li><a class="reference internal" href="#survival-statistics">survival_statistics()</a></li>
+<li><a class="reference internal" href="#get-stata-info">get_stata_info()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stata-intallation">Stata intallation</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">NORDCAN</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation of R-module nordcansurvival</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.1.
+    </div>
+  </body>
+</html>
